@@ -3,9 +3,9 @@
 A terminal-themed personal website built with Next.js and TypeScript. Features a unique retro-terminal aesthetic while maintaining modern web functionality.
 
 ## 🖥️ Live Demo
-Visit: [your-website-url-here]
+Visit: Kalanpeace.com
 
-![Terminal Theme Preview](preview.png)
+
 
 ## ✨ Features
 
@@ -99,13 +99,11 @@ create table newsletter_subscribers (
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- Inspired by retro terminal interfaces
+- Inspired by retro terminal interfaces and https://www.sacred.computer/
 - Built with [Next.js](https://nextjs.org/)
 - Styled with SCSS Modules
 - Database by [Supabase](https://supabase.com/)
