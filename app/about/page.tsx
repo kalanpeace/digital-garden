@@ -9,7 +9,6 @@ import Row from '@components/Row';
 import Text from '@components/Text';
 import Divider from '@components/Divider';
 import ActionListItem from '@components/ActionListItem';
-import Image from 'next/image';
 
 export const dynamic = 'force-static';
 
@@ -36,15 +35,13 @@ export default async function Page() {
               height: '200px', 
               position: 'relative',
               border: '2px solid var(--theme-border)',
-              flexShrink: 0
+              flexShrink: 0,
+              background: 'var(--theme-border)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}>
-              <Image
-                src="/profile.jpg"
-                alt="Kalan Peace"
-                fill
-                style={{ objectFit: 'cover' }}
-                priority
-              />
+              [IMAGE PENDING]
             </div>
             <Text>
               I'm Kalan Peace, founder of Vindael.com, where we're building the future of automation and AI business integration. 
