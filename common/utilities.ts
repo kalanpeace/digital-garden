@@ -54,12 +54,7 @@ export function onHandleThemeChange() {
   }
 
   if (body.classList.contains('theme-dark')) {
-    body.classList.replace('theme-dark', 'theme-blue');
-    return;
-  }
-
-  if (body.classList.contains('theme-blue')) {
-    body.classList.replace('theme-blue', 'theme-light');
+    body.classList.replace('theme-dark', 'theme-light');
     return;
   }
 }

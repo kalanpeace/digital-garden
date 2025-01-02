@@ -4,7 +4,6 @@ import styles from '@components/page/DefaultActionBar.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import { toggleDebugGrid } from '@components/DebugGrid';
 import { useHotkeys } from '@modules/hotkeys';
 
 import ActionBar from '@components/ActionBar';
@@ -113,9 +112,7 @@ interface DefaultActionBarProps {
 }
 
 const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
-  const [isGrid, setGrid] = React.useState(false);
   useHotkeys('ctrl+t', () => Utilities.onHandleThemeChange());
-  useHotkeys('ctrl+g', () => toggleDebugGrid());
 
   useGlobalNavigationHotkeys();
 
@@ -124,17 +121,21 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
       <ActionBar
         items={[
           {
-            hotkey: '⌃+T',
-            onClick: () => Utilities.onHandleThemeChange(),
-            body: 'Theme',
-            selected: false,
+            hotkey: '⌃+H',
+            body: 'HOME',
+            onClick: () => window.location.href = '/',
+            selected: window.location.pathname === '/',
           },
           {
-            hotkey: '⌃+G',
-            onClick: () => {
-              toggleDebugGrid();
-            },
-            body: 'Grid',
+            hotkey: '⌃+A',
+            body: 'ABOUT',
+            onClick: () => window.location.href = '/about',
+            selected: window.location.pathname === '/about',
+          },
+          {
+            hotkey: '⌃+T',
+            onClick: () => Utilities.onHandleThemeChange(),
+            body: 'THEME',
             selected: false,
           },
           ...items,

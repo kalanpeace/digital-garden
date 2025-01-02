@@ -13,13 +13,35 @@ interface TreeViewProps {
   isRoot?: boolean;
   isLastChild?: boolean;
   parentLines?: boolean[];
+  href?: string;
+  onClick?: () => void;
 }
 
-const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, children, depth = 0, isFile = false, isRoot = false, isLastChild = false, parentLines = [] }) => {
+const TreeView: React.FC<TreeViewProps> = ({ 
+  defaultValue = false, 
+  title, 
+  children, 
+  depth = 0, 
+  isFile = false, 
+  isRoot = false, 
+  isLastChild = false, 
+  parentLines = [],
+  href,
+  onClick
+}) => {
   const [show, setShow] = React.useState<boolean>(defaultValue);
 
   const onToggleShow = (): void => {
-    if (!isFile) setShow((prevShow) => !prevShow);
+    if (isFile) {
+      if (href) {
+        window.open(href, '_blank');
+      }
+      if (onClick) {
+        onClick();
+      }
+    } else {
+      setShow((prevShow) => !prevShow);
+    }
   };
 
   const hasChildren = React.Children.count(children) > 0;
@@ -28,13 +50,19 @@ const TreeView: React.FC<TreeViewProps> = ({ defaultValue = false, title, childr
   const spacing = parentLines.map((line) => (line ? '│ . ' : '. . ')).join('');
   const endPrefix = isLastChild ? '└───' : '├───';
   const prefix = `${spacing}${endPrefix}`;
-  const icon = isFile ? ' ' : show ? '╦ ' : '╤ ';
+  const icon = isFile ? '📄 ' : show ? '╦ ' : '╤ ';
 
   const updatedParentLines = [...parentLines, !isLastChild];
 
   return (
     <div className={styles.root}>
-      <div tabIndex={0} role="button" onClick={onToggleShow} className={styles.item} aria-expanded={show}>
+      <div 
+        tabIndex={0} 
+        role={isFile ? "link" : "button"} 
+        onClick={onToggleShow} 
+        className={`${styles.item} ${isFile && href ? styles.file : ''}`} 
+        aria-expanded={show}
+      >
         {prefix}
         {icon}
         {title}

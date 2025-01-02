@@ -4,11 +4,22 @@
 
 .item {
   cursor: pointer;
+  padding: 0.25rem 0;
 
   &:focus {
     outline: 0;
     border: 0;
     background: var(--theme-focused-foreground);
+  }
+}
+
+.file {
+  color: var(--theme-text);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--theme-primary);
+    text-decoration: underline;
   }
 }
 
