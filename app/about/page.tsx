@@ -29,25 +29,10 @@ export default async function Page() {
         </Text>
 
         <Card title="[PROFESSIONAL PROFILE]">
-          <div style={{ display: 'flex', gap: '2rem', marginBottom: '2rem', alignItems: 'flex-start' }}>
-            <div style={{ 
-              width: '200px', 
-              height: '200px', 
-              position: 'relative',
-              border: '2px solid var(--theme-border)',
-              flexShrink: 0,
-              background: 'var(--theme-border)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-              [IMAGE PENDING]
-            </div>
-            <Text>
-              I'm Kalan Peace, founder of Vindael.com, where we're building the future of automation and AI business integration. 
-              With a deep passion for technology and automation, I help businesses leverage AI to transform their operations and decision-making processes.
-            </Text>
-          </div>
+          <Text style={{ marginBottom: '2rem' }}>
+            I'm Kalan Peace, founder of Vindael.com, where we're building the future of automation and AI business integration. 
+            With a deep passion for technology and automation, I help businesses leverage AI to transform their operations and decision-making processes.
+          </Text>
 
           <Row style={{ marginTop: '1rem' }}>CURRENT VENTURES:</Row>
           <ActionListItem icon="►">Founder & CEO of Vindael.com</ActionListItem>

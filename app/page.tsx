@@ -131,6 +131,7 @@ export default async function Page() {
           <ActionListItem icon="►">Implement live counting functionality</ActionListItem>
           <ActionListItem icon="►">Enhanced terminal-inspired UI elements</ActionListItem>
           <ActionListItem icon="►">Profile and community features</ActionListItem>
+          <ActionListItem icon="►">Add profile picture to about page</ActionListItem>
         </Card>
 
         <Divider type="GRADIENT" />
