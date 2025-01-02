@@ -3,6 +3,7 @@
 import styles from '@components/page/DefaultActionBar.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
+import { useRouter, usePathname } from 'next/navigation';
 
 import { useHotkeys } from '@modules/hotkeys';
 
@@ -112,8 +113,10 @@ interface DefaultActionBarProps {
 }
 
 const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  
   useHotkeys('ctrl+t', () => Utilities.onHandleThemeChange());
-
   useGlobalNavigationHotkeys();
 
   return (
@@ -123,14 +126,14 @@ const DefaultActionBar: React.FC<DefaultActionBarProps> = ({ items = [] }) => {
           {
             hotkey: '⌃+H',
             body: 'HOME',
-            onClick: () => window.location.href = '/',
-            selected: window.location.pathname === '/',
+            onClick: () => router.push('/'),
+            selected: pathname === '/',
           },
           {
             hotkey: '⌃+A',
             body: 'ABOUT',
-            onClick: () => window.location.href = '/about',
-            selected: window.location.pathname === '/about',
+            onClick: () => router.push('/about'),
+            selected: pathname === '/about',
           },
           {
             hotkey: '⌃+T',
