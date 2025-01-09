@@ -36,6 +36,7 @@ export default async function Page() {
         
         <Text style={{ marginBottom: '2rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
           Hey there! I'm Kalan Peace. This is my digital garden where I share my thoughts on technology, automation, and software development.
+          Join me every Sunday for new updates.
         </Text>
 
         <Card title="[TERMINAL BROADCAST]">
@@ -43,8 +44,8 @@ export default async function Page() {
           
           <Text style={{ marginTop: '2rem', opacity: 0.8 }}>LATEST TRANSMISSION:</Text>
           
-          <Card title="Welcome to my Digital Garden [1/7/2025]">
-            <Text>A glimpse into my upcoming journey through technology, automation, and personal development. Join me as we explore the intersection of code and creativity.</Text>
+          <Card title="Welcome to my Digital Garden [1/12/2025]">
+            <Text>Welcome to my first newsletter! This year I will be doing weekly sprints, focusing on one project each week to maximize progress and share the journey with you.</Text>
             <Row style={{ marginTop: '1rem' }}>STATUS: Coming Soon</Row>
           </Card>
         </Card>
@@ -132,6 +133,14 @@ export default async function Page() {
           <ActionListItem icon="►">Enhanced terminal-inspired UI elements</ActionListItem>
           <ActionListItem icon="►">Profile and community features</ActionListItem>
           <ActionListItem icon="►">Add profile picture to about page</ActionListItem>
+        </Card>
+
+        <Card title="Lunakai AI Agent">
+          <Row>Progress: <BarProgress progress={25} /></Row>
+          <Row>Stack: Python/LLM</Row>
+          <Row>Status: Research Phase</Row>
+          <Row style={{ marginTop: '1rem' }}>DEVELOPMENT ROADMAP:</Row>
+          <ActionListItem icon="►">Fine-tune open source LLM</ActionListItem>
         </Card>
 
         <Divider type="GRADIENT" />
