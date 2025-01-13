@@ -1,9 +1,19 @@
 import Providers from '@components/Providers';
+import type { Metadata } from 'next';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: 'Kalan Peace',
+  description: 'Digital Garden',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en-us">
-      <body className="theme-light">
+    <html lang="en-us" suppressHydrationWarning>
+      <body className="theme-light" suppressHydrationWarning>
         <Providers>{children}</Providers>
       </body>
     </html>
