@@ -14,6 +14,7 @@ import Row from '@components/Row';
 import Text from '@components/Text';
 import TreeView from '@components/TreeView';
 import NewsletterForm from '@components/NewsletterForm';
+import Link from 'next/link';
 
 export const dynamic = 'force-static';
 
@@ -46,7 +47,17 @@ export default async function Page() {
           
           <Card title="Welcome to my Digital Garden [1/12/2025]">
             <Text>Welcome to my first newsletter! This year I will be doing weekly sprints, focusing on one project each week to maximize progress and share the journey with you.</Text>
-            <Row style={{ marginTop: '1rem' }}>STATUS: Coming Soon</Row>
+            <Row style={{ marginTop: '1rem' }}>STATUS: Completed</Row>
+            <Row style={{ marginTop: '0.5rem' }}>
+              <Link href="/newsletter/first" style={{ color: 'inherit', textDecoration: 'none' }}>
+                ► READ FULL TRANSMISSION
+              </Link>
+            </Row>
+          </Card>
+
+          <Card title="Week 2: First Client Sprint [Coming Soon]">
+            <Text>Following our journey into AI, we're switching gears to focus on a crucial milestone - landing the first client on Upwork.</Text>
+            <Row style={{ marginTop: '1rem' }}>STATUS: Coming 1/19/2025</Row>
           </Card>
         </Card>
 
@@ -136,11 +147,14 @@ export default async function Page() {
         </Card>
 
         <Card title="Lunakai AI Agent">
-          <Row>Progress: <BarProgress progress={25} /></Row>
+          <Row>Progress: <BarProgress progress={75} /></Row>
           <Row>Stack: Python/LLM</Row>
-          <Row>Status: Research Phase</Row>
-          <Row style={{ marginTop: '1rem' }}>DEVELOPMENT ROADMAP:</Row>
-          <ActionListItem icon="►">Fine-tune open source LLM</ActionListItem>
+          <Row>Status: On Hold - Awaiting AI Advancements</Row>
+          <Row style={{ marginTop: '1rem' }}>DEVELOPMENT NOTES:</Row>
+          <ActionListItem icon="►">Initial development completed with custom personas</ActionListItem>
+          <ActionListItem icon="►">Project paused due to current AI limitations and costs</ActionListItem>
+          <ActionListItem icon="►">Will revisit in 6-8 months when AI technology matures</ActionListItem>
+          <ActionListItem icon="►">Future focus: Better databases and improved infrastructure</ActionListItem>
         </Card>
 
         <Divider type="GRADIENT" />
