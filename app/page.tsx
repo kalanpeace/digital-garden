@@ -49,7 +49,7 @@ export default async function Page() {
             <Text>Welcome to my first newsletter! This year I will be doing weekly sprints, focusing on one project each week to maximize progress and share the journey with you.</Text>
             <Row style={{ marginTop: '1rem' }}>STATUS: Completed</Row>
             <Row style={{ marginTop: '0.5rem' }}>
-              <Link href="/newsletter/first" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link href="/newsletter-first" style={{ color: 'inherit', textDecoration: 'none' }}>
                 ► READ FULL TRANSMISSION
               </Link>
             </Row>
