@@ -49,15 +49,25 @@ export default async function Page() {
             <Text>Welcome to my first newsletter! This year I will be doing weekly sprints, focusing on one project each week to maximize progress and share the journey with you.</Text>
             <Row style={{ marginTop: '1rem' }}>STATUS: Completed</Row>
             <Row style={{ marginTop: '0.5rem' }}>
-              <Link href="/newsletter-first" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link href="/newsletter/first" style={{ color: 'inherit', textDecoration: 'none' }}>
                 ► READ FULL TRANSMISSION
               </Link>
             </Row>
           </Card>
 
-          <Card title="Week 2: First Client Sprint [Coming Soon]">
+          <Card title="Week 2: First Client Sprint [1/19/2025]">
             <Text>Following our journey into AI, we're switching gears to focus on a crucial milestone - landing the first client on Upwork.</Text>
-            <Row style={{ marginTop: '1rem' }}>STATUS: Coming 1/19/2025</Row>
+            <Row style={{ marginTop: '1rem' }}>STATUS: Completed</Row>
+            <Row style={{ marginTop: '0.5rem' }}>
+              <Link href="/newsletter/second" style={{ color: 'inherit', textDecoration: 'none' }}>
+                ► READ FULL TRANSMISSION
+              </Link>
+            </Row>
+          </Card>
+
+          <Card title="Week 3: Landing a Client 2.0 [1/26/2025]">
+            <Text>Taking a step back to implement the lessons learned. A refined approach to securing our first client with a clearer focus and strategy.</Text>
+            <Row style={{ marginTop: '1rem' }}>STATUS: Coming Soon</Row>
           </Card>
         </Card>
 
