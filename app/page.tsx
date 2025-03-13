@@ -37,7 +37,7 @@ export default async function Page() {
         
         <Text style={{ marginBottom: '2rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
           Hey there! I'm Kalan Peace. This is my digital garden where I share my thoughts on technology, automation, and software development.
-          Join me every Sunday for new updates.
+          Join me every month for new updates.
         </Text>
 
         <Card title="[TERMINAL BROADCAST]">
@@ -45,28 +45,28 @@ export default async function Page() {
           
           <Text style={{ marginTop: '2rem', opacity: 0.8 }}>LATEST TRANSMISSION:</Text>
           
-          <Card title="Welcome to my Digital Garden [1/12/2025]">
-            <Text>Welcome to my first newsletter! This year I will be doing weekly sprints, focusing on one project each week to maximize progress and share the journey with you.</Text>
+          <Card title="Getting Started [January 2025]">
+            <Text>In my first month, I launched this digital garden and created the Lunakai AI agent - starting my journey into building in public and sharing my progress.</Text>
             <Row style={{ marginTop: '1rem' }}>STATUS: Completed</Row>
             <Row style={{ marginTop: '0.5rem' }}>
-              <Link href="/newsletter/first" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link href="/newsletter/january-2025" style={{ color: 'inherit', textDecoration: 'none' }}>
                 ► READ FULL TRANSMISSION
               </Link>
             </Row>
           </Card>
 
-          <Card title="Week 2: First Client Sprint [1/19/2025]">
-            <Text>Following our journey into AI, we're switching gears to focus on a crucial milestone - landing the first client on Upwork.</Text>
+          <Card title="InventoryAgent.ai Launch [February 2025]">
+            <Text>This month I developed InventoryAgent.ai, an AI-powered inventory management solution, after extensive research into Y Combinator's startup methodology and best practices.</Text>
             <Row style={{ marginTop: '1rem' }}>STATUS: Completed</Row>
             <Row style={{ marginTop: '0.5rem' }}>
-              <Link href="/newsletter/second" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link href="/newsletter/february-2025" style={{ color: 'inherit', textDecoration: 'none' }}>
                 ► READ FULL TRANSMISSION
               </Link>
             </Row>
           </Card>
 
-          <Card title="Week 3: Landing a Client 2.0 [1/26/2025]">
-            <Text>Taking a step back to implement the lessons learned. A refined approach to securing our first client with a clearer focus and strategy.</Text>
+          <Card title="March Updates [March 2025]">
+            <Text>New developments and project updates for March - expanding on existing projects and exploring new opportunities.</Text>
             <Row style={{ marginTop: '1rem' }}>STATUS: Coming Soon</Row>
           </Card>
         </Card>
@@ -165,6 +165,17 @@ export default async function Page() {
           <ActionListItem icon="►">Project paused due to current AI limitations and costs</ActionListItem>
           <ActionListItem icon="►">Will revisit in 6-8 months when AI technology matures</ActionListItem>
           <ActionListItem icon="►">Future focus: Better databases and improved infrastructure</ActionListItem>
+        </Card>
+
+        <Card title="InventoryAgent.ai">
+          <Row>Progress: <BarProgress progress={60} /></Row>
+          <Row>Stack: Next.js/Supabase</Row>
+          <Row>Status: Active Development</Row>
+          <Row style={{ marginTop: '1rem' }}>DEVELOPMENT ROADMAP:</Row>
+          <ActionListItem icon="►">AI-powered inventory prediction and management</ActionListItem>
+          <ActionListItem icon="►">Integration with e-commerce platforms and POS systems</ActionListItem>
+          <ActionListItem icon="►">Advanced forecasting and image recognition features</ActionListItem>
+          <ActionListItem icon="►">Comprehensive API for third-party integrations</ActionListItem>
         </Card>
 
         <Divider type="GRADIENT" />
