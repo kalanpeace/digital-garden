@@ -150,7 +150,7 @@ const HINT_CATEGORIES = [
 
 // Flatten all hints into a single array for random selection
 const createHintPool = () => {
-  let allHints = [];
+  let allHints: { category: string; hint: string; answer: string; difficulty: string; }[] = [];
   HINT_CATEGORIES.forEach(category => {
     category.hints.forEach(hint => {
       allHints.push({
@@ -182,7 +182,7 @@ const HintGame = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   
   // Game state
-  const [hintPool, setHintPool] = useState([]);
+  const [hintPool, setHintPool] = useState<{ category: string; hint: string; answer: string; difficulty: string; }[]>([]);
   const [currentHintIndex, setCurrentHintIndex] = useState(-1);
   const [attempts, setAttempts] = useState(0);
   const [score, setScore] = useState(0);
