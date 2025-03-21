@@ -1,0 +1,188 @@
+/* Game page styling */
+.container {
+  min-height: 100vh;
+  background-color: #000000;
+  background-image: 
+    radial-gradient(rgba(50, 0, 0, 0.2) 2px, transparent 0),
+    linear-gradient(rgba(50, 0, 0, 0.2) 1px, transparent 1px);
+  background-size: 20px 20px, 100% 2px;
+  padding: 3rem 1rem;
+  color: #ff0000;
+  font-family: 'Courier New', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.7) 0%, 
+    rgba(10, 0, 0, 0.5) 50%, 
+    rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-block;
+  color: #ff8888;
+  margin-bottom: 2rem;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.backLink:hover {
+  color: #ffffff;
+}
+
+.backLink::before {
+  content: "←";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.gameContainer {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #aa0000;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 20px rgba(200, 0, 0, 0.1);
+  position: relative;
+}
+
+.gameContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ff0000;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.instructionsContainer {
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.instructions {
+  color: #ffbbbb;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: #cc7777;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    0deg,
+    rgba(50, 0, 0, 0.03) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(50, 0, 0, 0.03) 50%,
+    rgba(50, 0, 0, 0.03) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 4px 4px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.15;
+}
+
+/* Space animation effect */
+@keyframes drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100px;
+  }
+}
+
+.container {
+  animation: drift 60s linear infinite;
+}
+
+/* Stars twinkling effect */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(white, rgba(255, 255, 255, 0.2) 2px, transparent 3px),
+    radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 2px),
+    radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 3px);
+  background-size: 550px 550px, 350px 350px, 250px 250px;
+  background-position: 0 0, 40px 60px, 130px 270px;
+  z-index: 0;
+  opacity: 0.1;
+  animation: twinkle 10s linear infinite;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.1;
+  }
+} 

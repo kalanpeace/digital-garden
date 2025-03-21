@@ -1,0 +1,619 @@
+/* Terminal Game Styles */
+.terminalContainer {
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  background-color: #000000;
+  color: #cc0000;
+  padding: 1.5rem;
+  font-family: 'Courier New', monospace;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(180, 0, 0, 0.2), 0 0 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #440000;
+  position: relative;
+}
+
+.terminalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #330000;
+}
+
+.terminalTitle {
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.terminalStatus {
+  color: #aa0000;
+  font-size: 0.9rem;
+}
+
+.terminalScreen {
+  height: 20rem;
+  background-color: #000000;
+  background-image: radial-gradient(rgba(80, 0, 0, 0.1) 1px, transparent 0);
+  background-size: 10px 10px;
+  border: 1px solid #330000;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  overflow: hidden !important;
+  position: relative;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide scrollbars for all browsers */
+.terminalScreen::-webkit-scrollbar,
+.terminalOutput::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+.terminalOutput {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+  overflow: hidden !important;
+  margin-bottom: 0;
+  height: 100%;
+  max-height: none;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.3;
+  white-space: pre-wrap;
+  color: #ff0000;
+}
+
+/* Game board for Space Shooter game */
+.gameBoard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+/* Player spaceship */
+.player {
+  position: absolute;
+  background-color: transparent;
+  color: #ff3333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  z-index: 3;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.9), 0 0 20px rgba(255, 100, 0, 0.6);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* Enemy */
+.enemy {
+  position: absolute;
+  background-color: transparent;
+  color: #ff0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  z-index: 2;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  animation: pulse 1.5s infinite;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* Bullet */
+.bullet {
+  position: absolute;
+  background-color: #ff5555;
+  width: 8px;
+  height: 14px;
+  border-radius: 2px;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 1), 0 0 15px rgba(255, 150, 0, 0.8);
+  transform: translateX(-50%);
+  border: 1px solid #ffffff;
+}
+
+/* Timer display */
+.timerDisplay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(40, 0, 0, 0.7);
+  color: #ff5555;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 10;
+  border: 1px solid #550000;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+  animation: pulse 1s infinite alternate;
+}
+
+/* Debug info display */
+.debugInfo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(40, 0, 0, 0.7);
+  color: #ff5555;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 10;
+  border: 1px solid #550000;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+/* Stars background */
+.star {
+  position: absolute;
+  background-color: #550000;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Mobile controls */
+.mobileControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.horizontalControls {
+  display: flex;
+  gap: 3rem;
+}
+
+.directionButton {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(40, 0, 0, 0.7);
+  color: #cc0000;
+  border: 1px solid #440000;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.shootButton {
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(80, 0, 0, 0.7);
+  color: #ff0000;
+  border: 1px solid #660000;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.directionButton:hover,
+.directionButton:active,
+.shootButton:hover,
+.shootButton:active {
+  background-color: rgba(60, 0, 0, 0.8);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.directionButton:active,
+.shootButton:active {
+  background-color: rgba(100, 0, 0, 0.9);
+  transform: scale(0.95);
+}
+
+/* Make mobile controls more visible and responsive */
+@media (max-width: 768px) {
+  .mobileControls {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .directionButton {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.4rem;
+  }
+  
+  /* Adjust horizontal spacing for better visibility */
+  .horizontalControls {
+    gap: 2rem;
+  }
+  
+  /* Ensure the game area is tall enough on mobile */
+  .terminalScreen {
+    height: 22rem;
+  }
+}
+
+/* Hide mobile controls on desktop */
+@media (min-width: 768px) {
+  .mobileControls {
+    display: none;
+  }
+}
+
+.terminalControls {
+  width: 100%;
+}
+
+.terminalInput {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #660000;
+  background-color: #110000;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.prompt {
+  font-weight: bold;
+  margin-right: 0.5rem;
+  color: #ff0000;
+}
+
+.input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ff0000;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+}
+
+.input::placeholder {
+  color: #660000;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .buttonsContainer {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.tryAgainButton {
+  border: 1px solid #aa0000;
+  color: #cc0000;
+}
+
+.tryAgainButton:hover {
+  background-color: #220000;
+}
+
+.accessButton {
+  background-color: #550000;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+}
+
+.accessButton:hover {
+  background-color: #770000;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+.statsBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #110000;
+  border: 1px solid #330000;
+}
+
+.stat {
+  font-size: 0.85rem;
+  color: #aa0000;
+}
+
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(150, 0, 0, 0.03) 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.screenGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 20px rgba(150, 0, 0, 0.3);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 0.25rem;
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.98) translateX(-50%) translateY(-50%);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02) translateX(-50%) translateY(-50%);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(0.98) translateX(-50%) translateY(-50%);
+  }
+}
+
+/* Fix for mobile touch events */
+@media (max-width: 768px) {
+  .terminalScreen {
+    touch-action: none;
+  }
+}
+
+.terminalContainer::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #550000, transparent, #440000, transparent, #550000);
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0.2;
+  animation: pulse 3s infinite;
+  border-radius: 0.6rem;
+}
+
+/* Explosion animation */
+.explosion {
+  position: absolute;
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: bold;
+  z-index: 20;
+  animation: explode 1s forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 0 25px rgba(255, 100, 50, 1), 0 0 40px rgba(255, 200, 0, 0.9);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+@keyframes explode {
+  0% {
+    opacity: 1;
+    transform: scale(0.5) translateX(-50%) translateY(-50%);
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+  }
+  20% {
+    opacity: 1;
+    color: #ffcc00;
+    transform: scale(1.8) translateX(-15%) translateY(-15%);
+    text-shadow: 0 0 35px rgba(255, 200, 0, 1), 0 0 25px rgba(255, 255, 255, 0.8);
+  }
+  60% {
+    opacity: 0.9;
+    color: #ff5500;
+    transform: scale(2.2) translateX(-12%) translateY(-12%);
+    text-shadow: 0 0 30px rgba(255, 100, 0, 0.9), 0 0 20px rgba(255, 200, 100, 0.7);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.8) translateX(-10%) translateY(-10%);
+    text-shadow: 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+
+/* Game board for Pixel Runner game */
+.gameBoard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Ground for runner game */
+.ground {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to bottom, #770000, #550000);
+  border-top: 2px solid #ff3333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Player character for pixel runner */
+.runnerPlayer {
+  position: absolute;
+  background: linear-gradient(135deg, #ff5555, #ff3333);
+  width: 20px;
+  height: 30px;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  transition: transform 0.1s ease;
+}
+
+.runnerPlayer::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Obstacle */
+.obstacle {
+  position: absolute;
+  background: linear-gradient(135deg, #aa0000, #880000);
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+  border: 2px solid #ff3333;
+  border-radius: 4px;
+  transform-origin: bottom center;
+  animation: obstacleFloat 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes obstacleFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-3px) rotate(2deg);
+  }
+}
+
+/* Score display */
+.scoreDisplay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, rgba(80, 0, 0, 0.9), rgba(40, 0, 0, 0.9));
+  color: #ff8888;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 10;
+  border: 2px solid #aa0000;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+/* Instruction display */
+.instructionDisplay {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(80, 0, 0, 0.9), rgba(40, 0, 0, 0.9));
+  color: #ffaaaa;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 10;
+  border: 2px solid #aa0000;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  white-space: nowrap;
+  opacity: 0.9;
+  animation: fadeInOut 2s infinite alternate;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.8;
+  }
+} 

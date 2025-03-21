@@ -1,195 +1,223 @@
-import '@root/global.scss';
+'use client';
 
 import * as React from 'react';
-import ActionListItem from '@components/ActionListItem';
-import Avatar from '@components/Avatar';
-import BarProgress from '@components/BarProgress';
-import Card from '@components/Card';
-import DefaultActionBar from '@components/page/DefaultActionBar';
-import DefaultLayout from '@components/page/DefaultLayout';
-import Divider from '@components/Divider';
-import Grid from '@components/Grid';
-import Input from '@components/Input';
-import Row from '@components/Row';
-import Text from '@components/Text';
-import TreeView from '@components/TreeView';
-import NewsletterForm from '@components/NewsletterForm';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import Head from 'next/head';
+import styles from './page.module.css';
 
-export const dynamic = 'force-static';
+// This is a brand new professional page, abandoning the terminal aesthetic for a clean, modern design
 
-export async function generateMetadata() {
-  return {
-    title: "Kalan Peace",
-    description: "Automation Expert & Developer",
-  };
-}
+export default function Page() {
+  // Ref for sections that need animation
+  const sectionsRef = useRef<HTMLElement[]>([]);
 
-export default async function Page() {
+  // Animation observer setup
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.visible);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    // Get all sections that need animation
+    const sections = document.querySelectorAll(`.${styles.section}, .${styles.gameSection}`);
+    
+    // Observe each section
+    sections.forEach(section => {
+      observer.observe(section);
+      sectionsRef.current.push(section as HTMLElement);
+    });
+
+    return () => {
+      sections.forEach(section => {
+        observer.unobserve(section);
+      });
+    };
+  }, []);
+
   return (
-    <DefaultLayout previewPixelSRC="/favicon.ico">
-      <DefaultActionBar />
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Kalan Peace',
+              url: 'https://kalanpeace.com',
+              jobTitle: 'AI Tools Expert & Founder',
+              worksFor: {
+                '@type': 'Organization',
+                name: 'Vindael Agency'
+              },
+              description: 'AI Tools Expert & Business Automation Specialist | Studying ML and AI',
+              email: 'kalan@vindael.com',
+              sameAs: [
+                'https://x.com/kalantheconuqer',
+                'https://youtube.com/kalanpeace',
+                'https://linkedin.com/in/kalanpeace'
+              ]
+            })
+          }}
+        />
+      </Head>
+      
+      <div className={styles.container}>
+        {/* Hero Section */}
+        <header className={styles.header}>
+          <div className={styles.headerContent}>
+            <h1 className={styles.title}>
+              Kalan Peace
+            </h1>
+            <p className={styles.subtitle}>
+              AI Tools Expert | Business Automation Specialist | Founder of Vindael Agency
+            </p>
+            <div className={styles.divider}></div>
+          </div>
+        </header>
 
-      <Grid>
-        <Text style={{ fontSize: '2rem', marginBottom: '1rem', textAlign: 'center' }}>
-          WELCOME TO THE TERMINAL
-        </Text>
-        
-        <Text style={{ marginBottom: '2rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
-          Hey there! I'm Kalan Peace. This is my digital garden where I share my thoughts on technology, automation, and software development.
-          Join me every month for new updates.
-        </Text>
+        {/* Professional Profile */}
+        <section className={`${styles.section} ${styles.alternate}`}>
+          <div className={styles.sectionContent}>
+            <h2 className={styles.sectionTitle}>Professional Profile</h2>
+            <p className={styles.text}>
+              I'm Kalan Peace, an AI tools expert and founder of Vindael Agency, where we help businesses implement AI and automation solutions into their existing software and workflows.
+              While studying ML and AI, I apply cutting-edge technologies to solve real-world business problems and significantly enhance operational efficiency for our clients.
+              My passion lies in making advanced AI tools accessible and practical for businesses of all sizes.
+            </p>
+            
+            <h3 className={styles.sectionTitle}>Current Ventures</h3>
+            <ul className={styles.list}>
+              <li className={styles.listItem}>
+                <span className={styles.listItemBullet}>•</span>
+                <span>Founder & CEO of Vindael Agency</span>
+              </li>
+              <li className={styles.listItem}>
+                <span className={styles.listItemBullet}>•</span>
+                <span>AI Tools & Integration Expert</span>
+              </li>
+              <li className={styles.listItem}>
+                <span className={styles.listItemBullet}>•</span>
+                <span>Business Process Automation Specialist</span>
+              </li>
+              <li className={styles.listItem}>
+                <span className={styles.listItemBullet}>•</span>
+                <span>Studying ML and AI Technologies</span>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-        <Card title="[TERMINAL BROADCAST]">
-          <NewsletterForm />
-          
-          <Text style={{ marginTop: '2rem', opacity: 0.8 }}>LATEST TRANSMISSION:</Text>
-          
-          <Card title="Getting Started [January 2025]">
-            <Text>In my first month, I launched this digital garden and created the Lunakai AI agent - starting my journey into building in public and sharing my progress.</Text>
-            <Row style={{ marginTop: '1rem' }}>STATUS: Completed</Row>
-            <Row style={{ marginTop: '0.5rem' }}>
-              <Link href="/newsletter/january-2025" style={{ color: 'inherit', textDecoration: 'none' }}>
-                ► READ FULL TRANSMISSION
-              </Link>
-            </Row>
-          </Card>
+        {/* Vindael Agency */}
+        <section className={styles.section}>
+          <div className={styles.sectionContent}>
+            <h2 className={styles.sectionTitle}>Vindael Agency</h2>
+            <p className={styles.text}>
+              At Vindael Agency, we specialize in integrating AI tools and automation solutions into existing business systems. Our expertise lies in creating seamless connections between cutting-edge AI technologies and your current software stack, enhancing capabilities without disrupting workflows.
+            </p>
+            
+            <h3 className={styles.sectionTitle}>Key Services</h3>
+            <div className={styles.cardGrid}>
+              <div className={styles.card}>
+                <h4 className={styles.cardTitle}>AI Tools Integration</h4>
+                <p className={styles.cardText}>Implementing and connecting AI capabilities with your existing software ecosystem.</p>
+              </div>
+              <div className={styles.card}>
+                <h4 className={styles.cardTitle}>Workflow Automation</h4>
+                <p className={styles.cardText}>Building custom automation systems to eliminate repetitive tasks and streamline operations.</p>
+              </div>
+              <div className={styles.card}>
+                <h4 className={styles.cardTitle}>AI Strategy Consulting</h4>
+                <p className={styles.cardText}>Developing comprehensive roadmaps for AI adoption and implementation in your business.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-          <Card title="InventoryAgent.ai Launch [February 2025]">
-            <Text>This month I developed InventoryAgent.ai, an AI-powered inventory management solution, after extensive research into Y Combinator's startup methodology and best practices.</Text>
-            <Row style={{ marginTop: '1rem' }}>STATUS: Completed</Row>
-            <Row style={{ marginTop: '0.5rem' }}>
-              <Link href="/newsletter/february-2025" style={{ color: 'inherit', textDecoration: 'none' }}>
-                ► READ FULL TRANSMISSION
-              </Link>
-            </Row>
-          </Card>
+        {/* Projects */}
+        <section className={`${styles.section} ${styles.alternate}`}>
+          <div className={styles.sectionContent}>
+            <h2 className={styles.sectionTitle}>Projects & Achievements</h2>
+            <p className={styles.text}>
+              I'm constantly developing innovative projects that push the boundaries of what's possible with AI and automation. My work focuses on creating practical solutions that seamlessly integrate with existing business systems and deliver measurable results.
+            </p>
+            
+            <h3 className={styles.sectionTitle}>Current Projects</h3>
+            <div className={styles.cardGrid}>
+              <div className={`${styles.card} ${styles.whiteCard}`}>
+                <h4 className={styles.cardTitle}>InventoryAgent.ai</h4>
+                <p className={styles.cardText}>AI-powered inventory management system with predictive ordering capabilities</p>
+              </div>
+              <div className={`${styles.card} ${styles.whiteCard}`}>
+                <h4 className={styles.cardTitle}>AI Integration Framework</h4>
+                <p className={styles.cardText}>Proprietary system for seamlessly connecting AI tools with existing business software</p>
+              </div>
+              <div className={`${styles.card} ${styles.whiteCard}`}>
+                <h4 className={styles.cardTitle}>AutoFlow Suite</h4>
+                <p className={styles.cardText}>No-code automation platform for businesses to build custom workflow solutions</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-          <Card title="March Updates [March 2025]">
-            <Text>New developments and project updates for March - expanding on existing projects and exploring new opportunities.</Text>
-            <Row style={{ marginTop: '1rem' }}>STATUS: Coming Soon</Row>
-          </Card>
-        </Card>
+        {/* Contact & Social */}
+        <section className={styles.section}>
+          <div className={styles.sectionContent}>
+            <h2 className={styles.sectionTitle}>Connect With Me</h2>
+            <div className={styles.cardGrid}>
+              <div className={styles.card}>
+                <h4 className={styles.cardTitle}>Business Inquiries</h4>
+                <p className={styles.cardText}>kalan@vindael.com</p>
+              </div>
+              <div className={styles.card}>
+                <h4 className={styles.cardTitle}>Social Media</h4>
+                <p className={styles.cardText}>
+                  <a href="https://x.com/kalantheconuqer" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>X (Twitter)</a> | 
+                  <a href="https://youtube.com/kalanpeace" target="_blank" rel="noopener noreferrer" className={styles.socialLink}> YouTube</a> | 
+                  <a href="https://linkedin.com/in/kalanpeace" target="_blank" rel="noopener noreferrer" className={styles.socialLink}> LinkedIn</a>
+                </p>
+              </div>
+              <div className={styles.card}>
+                <h4 className={styles.cardTitle}>Location</h4>
+                <p className={styles.cardText}>Remote | Michigan</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <Divider type="GRADIENT" />
+        {/* Game Section */}
+        <section className={styles.gameSection}>
+          <div className={styles.sectionContent}>
+            <h2 className={styles.sectionTitle}>Want to try something fun?</h2>
+            <p className={styles.text}>
+              Test your knowledge with the Terminal Hint Game!
+            </p>
+            <Link href="/game" className={styles.button}>
+              Play Hint Game
+            </Link>
+          </div>
+        </section>
 
-        <Text style={{ fontSize: '1.2rem', marginTop: '2rem' }}>
-          [NETWORK CONNECTIONS]
-        </Text>
-        <ActionListItem icon="⌬" href="https://github.com/kalanpeace" target="_blank">
-          GitHub
-        </ActionListItem>
-        <ActionListItem icon="⌬" href="https://youtube.com/@kalanpeace" target="_blank">
-          YouTube
-        </ActionListItem>
-        <ActionListItem icon="⌬" href="https://tiktok.com/@kalanpeace" target="_blank">
-          TikTok
-        </ActionListItem>
-        <ActionListItem icon="⌬" href="https://twitter.com/kalanpeace" target="_blank">
-          Twitter
-        </ActionListItem>
-        <ActionListItem icon="⌬" href="https://linkedin.com/in/kalanpeace" target="_blank">
-          LinkedIn
-        </ActionListItem>
-
-        <Divider type="GRADIENT" />
-
-        <Text style={{ fontSize: '1.2rem', marginTop: '2rem' }}>
-          [KNOWLEDGE BASE]
-        </Text>
-        <TreeView title="Computer Science & AI" defaultValue={true}>
-          <TreeView title="Artificial Intelligence">
-            <TreeView title="Machine Learning Notes.txt" isFile href="#" />
-            <TreeView title="Neural Networks.txt" isFile href="#" />
-          </TreeView>
-          <TreeView title="Programming">
-            <TreeView title="Design Patterns.txt" isFile href="#" />
-            <TreeView title="System Architecture.txt" isFile href="#" />
-          </TreeView>
-        </TreeView>
-
-        <TreeView title="Automation & Systems" defaultValue={true}>
-          <TreeView title="Process Automation">
-            <TreeView title="Workflow Design.txt" isFile href="#" />
-            <TreeView title="Integration Patterns.txt" isFile href="#" />
-          </TreeView>
-          <TreeView title="Testing">
-            <TreeView title="Test Automation.txt" isFile href="#" />
-            <TreeView title="Quality Assurance.txt" isFile href="#" />
-          </TreeView>
-        </TreeView>
-
-        <TreeView title="Mathematics" defaultValue={true}>
-          <TreeView title="Applied Mathematics">
-            <TreeView title="Linear Algebra.txt" isFile href="#" />
-            <TreeView title="Statistics.txt" isFile href="#" />
-          </TreeView>
-          <TreeView title="Theoretical">
-            <TreeView title="Algorithms.txt" isFile href="#" />
-            <TreeView title="Discrete Math.txt" isFile href="#" />
-          </TreeView>
-        </TreeView>
-
-        <TreeView title="Philosophy & Literature" defaultValue={true}>
-          <TreeView title="Philosophy">
-            <TreeView title="Reading List.txt" isFile href="#" />
-            <TreeView title="Personal Notes.txt" isFile href="#" />
-          </TreeView>
-          <TreeView title="Academic Papers">
-            <TreeView title="Research Collection.txt" isFile href="#" />
-            <TreeView title="Study Notes.txt" isFile href="#" />
-          </TreeView>
-        </TreeView>
-
-        <Text style={{ fontSize: '1.2rem', marginTop: '2rem' }}>
-          [ACTIVE PROJECT]
-        </Text>
-        
-        <Card title="Personal Website">
-          <Row>Progress: <BarProgress progress={85} /></Row>
-          <Row>Stack: Next.js/TypeScript</Row>
-          <Row>Status: Active Development</Row>
-          <Row style={{ marginTop: '1rem' }}>DEVELOPMENT ROADMAP:</Row>
-          <ActionListItem icon="►">Implement live counting functionality</ActionListItem>
-          <ActionListItem icon="►">Enhanced terminal-inspired UI elements</ActionListItem>
-          <ActionListItem icon="►">Profile and community features</ActionListItem>
-          <ActionListItem icon="►">Add profile picture to about page</ActionListItem>
-        </Card>
-
-        <Card title="Lunakai AI Agent">
-          <Row>Progress: <BarProgress progress={75} /></Row>
-          <Row>Stack: Python/LLM</Row>
-          <Row>Status: On Hold - Awaiting AI Advancements</Row>
-          <Row style={{ marginTop: '1rem' }}>DEVELOPMENT NOTES:</Row>
-          <ActionListItem icon="►">Initial development completed with custom personas</ActionListItem>
-          <ActionListItem icon="►">Project paused due to current AI limitations and costs</ActionListItem>
-          <ActionListItem icon="►">Will revisit in 6-8 months when AI technology matures</ActionListItem>
-          <ActionListItem icon="►">Future focus: Better databases and improved infrastructure</ActionListItem>
-        </Card>
-
-        <Card title="InventoryAgent.ai">
-          <Row>Progress: <BarProgress progress={60} /></Row>
-          <Row>Stack: Next.js/Supabase</Row>
-          <Row>Status: Active Development</Row>
-          <Row style={{ marginTop: '1rem' }}>DEVELOPMENT ROADMAP:</Row>
-          <ActionListItem icon="►">AI-powered inventory prediction and management</ActionListItem>
-          <ActionListItem icon="►">Integration with e-commerce platforms and POS systems</ActionListItem>
-          <ActionListItem icon="►">Advanced forecasting and image recognition features</ActionListItem>
-          <ActionListItem icon="►">Comprehensive API for third-party integrations</ActionListItem>
-        </Card>
-
-        <Divider type="GRADIENT" />
-
-        <Card title="[SYSTEM SPECS]">
-          <Row>OPERATOR: Kalan Peace</Row>
-          <Row>ROLE: Automation Expert & Developer</Row>
-          <Row>EMAIL: kalanpeace@gmail.com</Row>
-          <Row>STATUS: Online and accepting connections</Row>
-          <Row style={{ marginTop: '1rem' }}>SYSTEM METRICS:</Row>
-          <Row>► Projects Completed: 1</Row>
-          <Row>► Books Read: 0</Row>
-        </Card>
-      </Grid>
-    </DefaultLayout>
+        {/* Footer */}
+        <footer className={styles.footer}>
+          <div className={styles.footerContent}>
+            <p className={styles.copyright}>
+              &copy; {new Date().getFullYear()} Kalan Peace. All rights reserved.
+            </p>
+            <p className={styles.footerTagline}>
+              AI Tools Expert • Automation Specialist • Entrepreneur
+            </p>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }
